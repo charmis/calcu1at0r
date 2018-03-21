@@ -45,7 +45,7 @@
       }
     ],
     "no-arg": true,
-    "no-bitwise": true,
+    "no-bitwise": false,
     "no-console": [
       true,
       "debug",
@@ -79,8 +79,7 @@
     "one-line": [
       true,
       "check-open-brace",
-      "check-catch",
-      "check-else",
+      "check-catch",      
       "check-whitespace"
     ],
     "prefer-const": true,

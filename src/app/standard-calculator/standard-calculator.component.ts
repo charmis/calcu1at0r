@@ -8,12 +8,13 @@ import {CalculatorService} from '../calculator.service';
 })
 export class StandardCalculatorComponent implements OnInit {
 
+  output: string;
   constructor(private calculatorService: CalculatorService) { }
 
   ngOnInit() {
   }
 
-  processInput(input: string) {
-    this.calculatorService.processInput(input);
+  processInput(input: any) {
+    this.output = this.calculatorService.processInput(input);
   }
 }
