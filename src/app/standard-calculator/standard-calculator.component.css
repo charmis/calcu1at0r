@@ -8,3 +8,9 @@
     font-weight: 400;
     color: rgb(68, 68, 68)
   }
+
+  .operator-glowing-border { 
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px 1px #9ecaed;
+}

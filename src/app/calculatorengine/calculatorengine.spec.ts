@@ -1,6 +1,6 @@
 import { CalculatorEngine } from './calculatorengine';
 
-fdescribe('Calculatorengine', () => {
+describe('Calculatorengine', () => {
 
   let engine;
 
@@ -8,61 +8,60 @@ fdescribe('Calculatorengine', () => {
     engine = new CalculatorEngine();
   });
 
-  fit('should create an instance', () => {
+  it('should create an instance', () => {
     expect(engine).toBeTruthy();
   });
 
-  fit('should return 2 as output for input 2', () => {
+  it('should return 2 as output for input 2', () => {
     let output = engine.processInput(2);
-    expect(output).toBe('2');
+    expect(output.displayText).toBe('2');
   });
 
-  fit('should return 25 as output for input 2 and 5', () => {
+  it('should return 25 as output for input 2 and 5', () => {
     engine.processInput(2);
     let output = engine.processInput(5);
-    expect(output).toBe('25');
+    expect(output.displayText).toBe('25');
   });
 
-  fit('should return 253 as output for input 2 and 5 and 3', () => {
+  it('should return 253 as output for input 2 and 5 and 3', () => {
     engine.processInput(2);
     engine.processInput(5);
     let output = engine.processInput(3);
-    expect(output).toBe('253');
+    expect(output.displayText).toBe('253');
   });
 
-  fit('should return 0 for input 0', () => {
+  it('should return 0 for input 0', () => {
     let output = engine.processInput(0);
-    expect(output).toBe('0');
+    expect(output.displayText).toBe('0');
   });
 
-  fit('should return 0 for input 0 and 0', () => {
+  it('should return 0 for input 0 and 0', () => {
     engine.processInput(0);
     let output = engine.processInput(0);
-    expect(output).toBe('0');
+    expect(output.displayText).toBe('0');
   });
 
-  fit('should return 341 for input 3 and 4 and 1 and +', () => {
+  it('should return 341 for input 3 and 4 and 1 and +', () => {
     engine.processInput(3);
     engine.processInput(4);
     engine.processInput(1);
     let output = engine.processInput('+');
-    expect(output).toBe('341');
+    expect(output.displayText).toBe('341');
   });
 
-  fit('should return 2 for input 3 and + and 2', () => {
+  it('should return 2 for input 3 and + and 2', () => {
     engine.processInput(3);
     engine.processInput('+');
     let output = engine.processInput(2);
-    expect(output).toBe('2');
+    expect(output.displayText).toBe('2');
   });
 
-  fit('should return 5 for input 3 and + and 2 and =', () => {
-    debugger;
+  it('should return 5 for input 3 and + and 2 and =', () => {
     engine.processInput(3);
     engine.processInput('+');
     engine.processInput(2);
     let output = engine.processInput('=');
-    expect(output).toBe('5');
+    expect(output.displayText).toBe('5');
   });
 
 });

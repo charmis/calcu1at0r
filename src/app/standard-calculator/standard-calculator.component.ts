@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {CalculatorService} from '../calculator.service';
+import {DisplayState} from '../displaystate';
 
 @Component({
   selector: 'app-standard-calculator',
@@ -7,14 +8,15 @@ import {CalculatorService} from '../calculator.service';
   styleUrls: ['./standard-calculator.component.css']
 })
 export class StandardCalculatorComponent implements OnInit {
+ 
+  calcDisplayState:DisplayState;
 
-  output: string;
   constructor(private calculatorService: CalculatorService) { }
 
   ngOnInit() {
   }
 
   processInput(input: any) {
-    this.output = this.calculatorService.processInput(input);
+    this.calcDisplayState = this.calculatorService.processInput(input);
   }
 }

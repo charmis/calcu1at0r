@@ -1,6 +1,6 @@
 <table class="col-xs-8">
   <tr>
-    <td colspan="4">{{output}}</td>
+    <td colspan="4">{{calcDisplayState.displayText}}</td>
   </tr>
   <tr>
     <td><button type="button" class="btn btn-primary" (click)="processInput('M+');"><h4>M+</h4></button></td>
@@ -9,10 +9,10 @@
     <td><button type="button" class="btn btn-primary" (click)="processInput('MC');"><h4>MC</h4></button></td>
   </tr>
   <tr>
-    <td><button type="button" class="btn btn-primary" (click)="processInput('+');"><h4>+</h4></button></td>
-    <td><button type="button" class="btn btn-primary" (click)="processInput('-');"><h4>-</h4></button></td>
-    <td><button type="button" class="btn btn-primary" (click)="processInput('*');"><h4>*</h4></button></td>
-    <td><button type="button" class="btn btn-primary" (click)="processInput('/');"><h4>/</h4></button></td>
+    <td><button type="button" class="btn btn-primary" [class.operator-glowing-border]="calcDisplayState.operator == '+'" (click)="processInput('+');"><h4>+</h4></button></td>
+    <td><button type="button" class="btn btn-primary" [class.operator-glowing-border]="calcDisplayState.operator == '-'" (click)="processInput('-');"><h4>-</h4></button></td>
+    <td><button type="button" class="btn btn-primary" [class.operator-glowing-border]="calcDisplayState.operator == '*'" (click)="processInput('*');"><h4>x</h4></button></td>
+    <td><button type="button" class="btn btn-primary" [class.operator-glowing-border]="calcDisplayState.operator == '/'" (click)="processInput('/');"><h4>/</h4></button></td>
   </tr>
   <tr>
     <td><button type="button" class="btn btn-primary" (click)="processInput('1');"><h4>1</h4></button></td>

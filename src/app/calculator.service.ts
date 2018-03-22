@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CalculatorEngine} from './calculatorengine/calculatorengine';
+import {DisplayState} from './displaystate';
 
 @Injectable()
 export class CalculatorService {
@@ -9,7 +10,7 @@ export class CalculatorService {
     this.calcEngine = new CalculatorEngine();
   }
 
-  processInput(input: any): string {
+  processInput(input: any): DisplayState {
     return this.calcEngine.processInput(input);
   }
 }

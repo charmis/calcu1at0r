@@ -1,3 +1,5 @@
+import {DisplayState} from '../displaystate';
+
 export class CalculatorEngine {
     private input = '';
     private displayText = '';
@@ -31,7 +33,7 @@ export class CalculatorEngine {
 
     }
 
-    processInput(inputChar: any) {
+    processInput(inputChar: any): DisplayState {
         if (inputChar === this.ZERO) {
             if (this.input !== '0') {
                 this.input += inputChar;
@@ -78,8 +80,12 @@ export class CalculatorEngine {
         this.input = '';
     }
 
-    private getOutput(): string {
-        return this.displayText;
+    private getOutput(): DisplayState {
+        let displayState = new DisplayState();
+        displayState.displayText = this.displayText;
+        displayState.operator = this.operator;
+        
+        return displayState;
     }
 
     private setDisplayText(text: string) {
