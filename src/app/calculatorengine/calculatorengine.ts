@@ -1,10 +1,10 @@
 export class CalculatorEngine {
     private input = '';
-    private displayText: string;
+    private displayText = '';
 
-    private operand1: number;
-    private operand2: number;
-    private operator: string;
+    private operand1 = 0;
+    private operand2 = 0;
+    private operator = '';
 
     private ZERO = 0;
     private FLAG_ONE = 1;

@@ -2,10 +2,10 @@ import { CalculatorEngine } from './calculatorengine';
 
 fdescribe('Calculatorengine', () => {
 
-  let engine = new CalculatorEngine();
+  let engine;
 
   beforeEach(function () {
-    engine.clear();
+    engine = new CalculatorEngine();
   });
 
   fit('should create an instance', () => {
@@ -50,7 +50,6 @@ fdescribe('Calculatorengine', () => {
   });
 
   fit('should return 2 for input 3 and + and 2', () => {
-    debugger;
     engine.processInput(3);
     engine.processInput('+');
     let output = engine.processInput(2);
