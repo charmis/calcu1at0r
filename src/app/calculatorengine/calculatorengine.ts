@@ -42,19 +42,19 @@ export class CalculatorEngine {
             this.input += inputChar;
             this.setDisplayText(this.input);
         }
-        else if (inputChar & this.operatormask) {
+        else if (inputChar === '+' || inputChar === '-' || inputChar === '*' || inputChar === '/') {
             if (this.operator === '') {
-                this.operand1 += +inputChar;
+                this.operator = inputChar;
+                this.operand1 = +this.input;
+                this.clearInput();
+                this.setDisplayText(this.operand1.toString());
             }
             else {
                 this.operand2 = +inputChar;
             }
-
-            this.operator = inputChar;
         }
         else if (inputChar === '=') {
-            this.operand2 += +inputChar;
-
+            this.operand2 = +this.input;
             this.calculate();
 
             this.setDisplayText(this.result.toString());
@@ -63,9 +63,15 @@ export class CalculatorEngine {
         return this.getOutput();
     }
 
-    clearDisplay(): void {
+    clear(): void {
         this.clearInput();
-        this.setDisplayText('');
+        this.clearOperandsAndOperator();
+    }
+
+    private clearOperandsAndOperator(): void {
+        this.operand1 = 0;
+        this.operand2 = 0;
+        this.operator = '';
     }
 
     private clearInput(): void {
