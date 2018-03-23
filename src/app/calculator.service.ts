@@ -10,6 +10,10 @@ export class CalculatorService {
     this.calcEngine = new CalculatorEngine();
   }
 
+  start(): DisplayState {
+    return this.calcEngine.start();
+  }
+
   processInput(input: any): DisplayState {
     return this.calcEngine.processInput(input);
   }

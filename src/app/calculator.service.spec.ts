@@ -12,13 +12,19 @@ describe('CalculatorService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should contain a getAvailability method', inject([CalculatorService], (service: CalculatorService) => {
+  it('should contain a processInput method', inject([CalculatorService], (service: CalculatorService) => {
     expect(service.processInput).toBeDefined();
   }));
-/*
-  it('should return 4 when passing 4', inject([CalculatorService], (service: CalculatorService) => {
-    debugger;
-    expect(service.processInput('4')).toContain('4');
+
+  fit('should return 0 on invoking start()', inject([CalculatorService], (service: CalculatorService) => {
+    let output = service.start();
+    expect(output.displayText).toBe('0');
   }));
-*/
+
+  /*
+    it('should return 4 when passing 4', inject([CalculatorService], (service: CalculatorService) => {
+      debugger;
+      expect(service.processInput('4')).toContain('4');
+    }));
+  */
 });

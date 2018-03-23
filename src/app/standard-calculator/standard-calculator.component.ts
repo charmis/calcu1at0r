@@ -8,12 +8,13 @@ import {DisplayState} from '../displaystate';
   styleUrls: ['./standard-calculator.component.css']
 })
 export class StandardCalculatorComponent implements OnInit {
- 
-  calcDisplayState:DisplayState;
+
+  calcDisplayState: DisplayState;
 
   constructor(private calculatorService: CalculatorService) { }
 
   ngOnInit() {
+    this.calcDisplayState = this.calculatorService.start();
   }
 
   processInput(input: any) {

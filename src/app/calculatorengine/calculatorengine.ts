@@ -2,7 +2,7 @@ import {DisplayState} from '../displaystate';
 
 export class CalculatorEngine {
     private input = '';
-    private displayText = '';
+    private displayText = '0';
 
     private operand1 = 0;
     private operand2 = 0;
@@ -31,6 +31,10 @@ export class CalculatorEngine {
 
     constructor() {
 
+    }
+
+    start(): DisplayState {
+        return this.getOutput();
     }
 
     processInput(inputChar: any): DisplayState {
@@ -84,7 +88,7 @@ export class CalculatorEngine {
         let displayState = new DisplayState();
         displayState.displayText = this.displayText;
         displayState.operator = this.operator;
-        
+
         return displayState;
     }
 
