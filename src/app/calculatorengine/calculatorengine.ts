@@ -65,6 +65,10 @@ export class CalculatorEngine {
 
             this.setDisplayText(this.result.toString());
         }
+        else if (inputChar === 'C') {
+            this.clear();
+            this.setDisplayText('0');
+        }
 
         return this.getOutput();
     }
