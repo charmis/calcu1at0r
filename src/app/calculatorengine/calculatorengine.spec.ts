@@ -70,12 +70,62 @@ describe('Calculatorengine', () => {
     expect(output.displayText).toBe('5');
   });
 
-  fit('should return 0 for input C', () => {
+  it('should return 0 for input C', () => {
     engine.processInput(3);
     engine.processInput('+');
     engine.processInput(2);
     engine.processInput('=');
     let output = engine.processInput('C');
     expect(output.displayText).toBe('0');
+  });
+
+  fit('should return 0 for input CE', () => {
+    engine.processInput(3);
+    let output = engine.processInput('CE');
+    expect(output.displayText).toBe('0');
+  });
+
+  fit('should clear only current entry for input CE - 1', () => {
+    engine.processInput(3);
+    engine.processInput('+');
+    engine.processInput(2);
+    engine.processInput('CE');
+    engine.processInput(5);
+    let output = engine.processInput('=');
+    expect(output.displayText).toBe('8');
+  });
+
+  fit('should clear only current entry for input CE - 2', () => {
+    engine.processInput(3);
+    engine.processInput('CE');
+    engine.processInput(4);
+    engine.processInput('+');
+    engine.processInput(2);
+    let output = engine.processInput('=');
+    expect(output.displayText).toBe('6');
+  });
+
+  fit('should clear only current entry for input CE - 3', () => {
+    engine.processInput(3);
+    engine.processInput('CE');
+    engine.processInput(4);
+    engine.processInput('CE');
+    engine.processInput(1);
+    engine.processInput('+');
+    engine.processInput(2);
+    let output = engine.processInput('=');
+    expect(output.displayText).toBe('3');
+  });
+
+  fit('should clear only current entry for input CE - 4', () => {
+    engine.processInput(3);
+    engine.processInput('CE');
+    engine.processInput(1);
+    engine.processInput('+');
+    engine.processInput(2);
+    engine.processInput('CE');
+    engine.processInput(4);
+    let output = engine.processInput('=');
+    expect(output.displayText).toBe('5');
   });
 });

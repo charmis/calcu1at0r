@@ -38,7 +38,7 @@ export class CalculatorEngine {
     }
 
     processInput(inputChar: any): DisplayState {
-        if (inputChar == this.ZERO) {        
+        if (inputChar == this.ZERO) {
             if (this.input !== '0') {
                 this.input += inputChar;
                 this.setDisplayText(this.input);
@@ -67,6 +67,10 @@ export class CalculatorEngine {
         }
         else if (inputChar === 'C') {
             this.clear();
+            this.setDisplayText('0');
+        }
+        else if (inputChar === 'CE') {
+            this.clearInput();
             this.setDisplayText('0');
         }
 
