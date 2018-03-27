@@ -62,7 +62,7 @@ export class CalculatorEngine {
         else if (inputChar === '=') {
             this.operand2 = +this.input;
             this.calculate();
-
+            this.clear();
             this.setDisplayText(this.result.toString());
         }
         else if (inputChar === 'C') {
