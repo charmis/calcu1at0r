@@ -129,11 +129,21 @@ describe('Calculatorengine', () => {
     expect(output.displayText).toBe('5');
   });
 
-  fit('should clear operator after =', () => {
+  it('should clear operator after =', () => {
     engine.processInput(3);
     engine.processInput('+');
     engine.processInput(2);
     let output = engine.processInput('=');
     expect(output.operator).toBe('');
   });
+
+it('should return number from memory on MR', () => {
+    engine.processInput(5);
+    engine.processInput('M+');
+    engine.processInput('C');
+    engine.processInput(2);
+    let output = engine.processInput('MR');
+    expect(output.displayText).toBe('5');
+  });
+
 });
