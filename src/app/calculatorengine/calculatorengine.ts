@@ -8,6 +8,8 @@ export class CalculatorEngine {
     private operand2 = 0;
     private operator = '';
 
+    private memory = 0;
+
     private ZERO = 0;
     private FLAG_ONE = 1;
     private FLAG_TWO = 2;
@@ -72,6 +74,12 @@ export class CalculatorEngine {
         else if (inputChar === 'CE') {
             this.clearInput();
             this.setDisplayText('0');
+        }
+        else if (inputChar === 'M+') {
+            this.memory = +this.input;
+        }
+        else if (inputChar === 'MR') {
+            this.setDisplayText(this.memory.toString());
         }
 
         return this.getOutput();

@@ -137,7 +137,7 @@ describe('Calculatorengine', () => {
     expect(output.operator).toBe('');
   });
 
-it('should return number from memory on MR', () => {
+fit('should return number from memory on MR', () => {
     engine.processInput(5);
     engine.processInput('M+');
     engine.processInput('C');
