@@ -137,13 +137,23 @@ describe('Calculatorengine', () => {
     expect(output.operator).toBe('');
   });
 
-fit('should return number from memory on MR', () => {
+  it('should return number from memory on MR', () => {
     engine.processInput(5);
     engine.processInput('M+');
     engine.processInput('C');
     engine.processInput(2);
     let output = engine.processInput('MR');
     expect(output.displayText).toBe('5');
+  });
+
+  it('should return 0 on MR after MC', () => {
+    engine.processInput(5);
+    engine.processInput('M+');
+    engine.processInput('C');
+    engine.processInput(2);
+    engine.processInput('MC');
+    let output = engine.processInput('MR');
+    expect(output.displayText).toBe('0');
   });
 
 });
