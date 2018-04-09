@@ -78,6 +78,9 @@ export class CalculatorEngine {
         else if (inputChar === 'M+') {
             this.memory += +this.input;
         }
+        else if (inputChar === 'M-') {
+            this.memory -= +this.input;
+        }
         else if (inputChar === 'MR') {
             this.setDisplayText(this.memory.toString());
         }
@@ -93,7 +96,7 @@ export class CalculatorEngine {
         this.clearOperandsAndOperator();
     }
 
-    private clearMemory():void{
+    private clearMemory(): void {
         this.memory = 0;
     }
 
