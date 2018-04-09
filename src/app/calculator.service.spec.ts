@@ -16,7 +16,7 @@ describe('CalculatorService', () => {
     expect(service.processInput).toBeDefined();
   }));
 
-  fit('should return 0 on invoking start()', inject([CalculatorService], (service: CalculatorService) => {
+  it('should return 0 on invoking start()', inject([CalculatorService], (service: CalculatorService) => {
     let output = service.start();
     expect(output.displayText).toBe('0');
   }));

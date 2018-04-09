@@ -156,4 +156,14 @@ describe('Calculatorengine', () => {
     expect(output.displayText).toBe('0');
   });
 
+  it('should return 7 from memory on MR after few M+', () => {
+    engine.processInput(5);
+    engine.processInput('M+');
+    engine.processInput('+');
+    engine.processInput(2);
+    engine.processInput('M+');
+    let output = engine.processInput('MR');
+    expect(output.displayText).toBe('7');
+  });
+
 });
