@@ -176,4 +176,17 @@ describe('Calculatorengine', () => {
     expect(output.displayText).toBe('3');
   });
 
+  it('should return 1500 on 1 5 0 M+ C 1 0 * MR =', () => {
+    engine.processInput(1);
+    engine.processInput(5);
+    engine.processInput(0);
+    engine.processInput('M+');
+    engine.processInput('C');
+    engine.processInput('10');
+    engine.processInput('*');
+    engine.processInput('MR');
+    let output = engine.processInput('=');
+    expect(output.displayText).toBe('');
+  });
+
 });

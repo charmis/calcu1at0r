@@ -82,7 +82,9 @@ export class CalculatorEngine {
             this.memory -= +this.input;
         }
         else if (inputChar === 'MR') {
+            debugger;
             this.setDisplayText(this.memory.toString());
+            this.input = this.memory.toString();
         }
         else if (inputChar === 'MC') {
             this.clearMemory();
