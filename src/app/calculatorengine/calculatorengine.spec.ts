@@ -186,7 +186,32 @@ describe('Calculatorengine', () => {
     engine.processInput('*');
     engine.processInput('MR');
     let output = engine.processInput('=');
-    expect(output.displayText).toBe('');
+    expect(output.displayText).toBe('1500');
+  });
+
+  it('should return -10 on 1 0 +-', () => {
+    engine.processInput('1');
+    engine.processInput('0');
+    let output = engine.processInput('+-');
+    expect(output.displayText).toBe('-10');
+  });
+
+  it('should return 10 on 1 0 +- +-', () => {
+    engine.processInput('1');
+    engine.processInput('0');
+    engine.processInput('+-');
+    let output = engine.processInput('+-');
+    expect(output.displayText).toBe('10');
+  });
+
+  it('should return 5 on 1 0 +- + 5 =', () => {
+    engine.processInput('1');
+    engine.processInput('0');
+    engine.processInput('+-');
+    engine.processInput('+');
+    engine.processInput('5');
+    let output = engine.processInput('=');
+    expect(output.displayText).toBe('-5');
   });
 
 });
