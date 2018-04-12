@@ -79,13 +79,16 @@ export class CalculatorEngine {
             this.memory += +this.input;
         }
         else if (inputChar === '+-') {
-            if (this.input.indexOf('-', 0) === 0) {
-                this.input = this.input.replace('-', ''); 
+            debugger;
+            if (this.input !== '') {
+                if (this.input.indexOf('-', 0) === 0) {
+                    this.input = this.input.replace('-', '');
+                }
+                else {
+                    this.input = '-' + this.input;
+                }
+                this.setDisplayText(this.input);
             }
-            else {
-                this.input = '-' + this.input;
-            }
-            this.setDisplayText(this.input);
         }
         else if (inputChar === 'M-') {
             this.memory -= +this.input;
