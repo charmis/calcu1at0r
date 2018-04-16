@@ -214,4 +214,14 @@ describe('Calculatorengine', () => {
     expect(output.displayText).toBe('-5');
   });
 
+  it('should return 2.5 on 1 . 5 + 1 =', () => {
+    engine.processInput('1');
+    engine.processInput('.');
+    engine.processInput('5');
+    engine.processInput('+');
+    engine.processInput('1');
+    let output = engine.processInput('=');
+    expect(output.displayText).toBe('2.5');
+  });
+
 });

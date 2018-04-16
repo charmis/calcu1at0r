@@ -79,7 +79,6 @@ export class CalculatorEngine {
             this.memory += +this.input;
         }
         else if (inputChar === '+-') {
-            debugger;
             if (this.input !== '') {
                 if (this.input.indexOf('-', 0) === 0) {
                     this.input = this.input.replace('-', '');
@@ -99,6 +98,9 @@ export class CalculatorEngine {
         }
         else if (inputChar === 'MC') {
             this.clearMemory();
+        }
+        else if (inputChar === '.') {
+            this.input += inputChar;
         }
 
         return this.getOutput();
