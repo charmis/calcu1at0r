@@ -100,7 +100,9 @@ export class CalculatorEngine {
             this.clearMemory();
         }
         else if (inputChar === '.') {
-            this.input += inputChar;
+            if (this.input.indexOf('.') === -1) {
+                this.input += inputChar;
+            }
         }
 
         return this.getOutput();
