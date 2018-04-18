@@ -21,13 +21,7 @@ export class CalculatorEngine {
     private FLAG_EIGHT = 128;
     private FLAG_NINE = 256;
 
-    private FLAG_PLUS = 512;
-    private FLAG_MINUS = 1024;
-    private FLAG_MULTIPLY = 2048;
-    private FLAG_DIVISON = 4096;
-
     private numbermask = this.FLAG_ONE | this.FLAG_TWO | this.FLAG_THREE | this.FLAG_FOUR | this.FLAG_FIVE | this.FLAG_SIX | this.FLAG_SEVEN | this.FLAG_EIGHT | this.FLAG_NINE;
-    private operatormask = this.FLAG_PLUS | this.FLAG_MINUS | this.FLAG_MULTIPLY | this.FLAG_DIVISON;
 
     private result: number;
 
