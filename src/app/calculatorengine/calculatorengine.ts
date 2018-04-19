@@ -10,19 +10,6 @@ export class CalculatorEngine {
 
     private memory = 0;
 
-    private ZERO = 0;
-    private FLAG_ONE = 1;
-    private FLAG_TWO = 2;
-    private FLAG_THREE = 4;
-    private FLAG_FOUR = 8;
-    private FLAG_FIVE = 16;
-    private FLAG_SIX = 32;
-    private FLAG_SEVEN = 64;
-    private FLAG_EIGHT = 128;
-    private FLAG_NINE = 256;
-
-    private numbermask = this.FLAG_ONE | this.FLAG_TWO | this.FLAG_THREE | this.FLAG_FOUR | this.FLAG_FIVE | this.FLAG_SIX | this.FLAG_SEVEN | this.FLAG_EIGHT | this.FLAG_NINE;
-
     private result: number;
 
     constructor() {
@@ -34,69 +21,93 @@ export class CalculatorEngine {
     }
 
     processInput(inputChar: any): DisplayState {
-        if (inputChar == this.ZERO) {
-            if (this.input !== '0') {
+        switch (inputChar) {
+            case '0':
+                if (this.input !== '0') {
+                    this.input += inputChar;
+                    this.setDisplayText(this.input);
+                }
+                break;
+
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
                 this.input += inputChar;
                 this.setDisplayText(this.input);
-            }
-        }
-        else if (inputChar & this.numbermask) {
-            this.input += inputChar;
-            this.setDisplayText(this.input);
-        }
-        else if (inputChar === '+' || inputChar === '-' || inputChar === '*' || inputChar === '/') {
-            if (this.operator === '') {
-                this.operator = inputChar;
-                this.operand1 = +this.input;
-                this.clearInput();
-                this.setDisplayText(this.operand1.toString());
-            }
-            else {
-                this.operand2 = +inputChar;
-            }
-        }
-        else if (inputChar === '=') {
-            this.operand2 = +this.input;
-            this.calculate();
-            this.clear();
-            this.setDisplayText(this.result.toString());
-        }
-        else if (inputChar === 'C') {
-            this.clear();
-            this.setDisplayText('0');
-        }
-        else if (inputChar === 'CE') {
-            this.clearInput();
-            this.setDisplayText('0');
-        }
-        else if (inputChar === 'M+') {
-            this.memory += +this.input;
-        }
-        else if (inputChar === '+-') {
-            if (this.input !== '') {
-                if (this.input.indexOf('-', 0) === 0) {
-                    this.input = this.input.replace('-', '');
+                break;
+
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                if (this.operator === '') {
+                    this.operator = inputChar;
+                    this.operand1 = +this.input;
+                    this.clearInput();
+                    this.setDisplayText(this.operand1.toString());
                 }
                 else {
-                    this.input = '-' + this.input;
+                    this.operand2 = +inputChar;
                 }
-                this.setDisplayText(this.input);
-            }
-        }
-        else if (inputChar === 'M-') {
-            this.memory -= +this.input;
-        }
-        else if (inputChar === 'MR') {
-            this.setDisplayText(this.memory.toString());
-            this.input = this.memory.toString();
-        }
-        else if (inputChar === 'MC') {
-            this.clearMemory();
-        }
-        else if (inputChar === '.') {
-            if (this.input.indexOf('.') === -1) {
-                this.input += inputChar;
-            }
+                break;
+
+            case '=':
+                this.operand2 = +this.input;
+                this.calculate();
+                this.clear();
+                this.setDisplayText(this.result.toString());
+                break;
+
+            case 'C':
+                this.clear();
+                this.setDisplayText('0');
+                break;
+
+            case 'CE':
+                this.clearInput();
+                this.setDisplayText('0');
+                break;
+
+            case 'M+':
+                this.memory += +this.input;
+                break;
+
+            case '+-':
+                if (this.input !== '') {
+                    if (this.input.indexOf('-', 0) === 0) {
+                        this.input = this.input.replace('-', '');
+                    }
+                    else {
+                        this.input = '-' + this.input;
+                    }
+                    this.setDisplayText(this.input);
+                }
+                break;
+
+            case 'M-':
+                this.memory -= +this.input;
+                break;
+
+            case 'MR':
+                this.setDisplayText(this.memory.toString());
+                this.input = this.memory.toString();
+                break;
+
+            case 'MC':
+                this.clearMemory();
+                break;
+
+            case '.':
+                if (this.input.indexOf('.') === -1) {
+                    this.input += inputChar;
+                }
+                break;
         }
 
         return this.getOutput();
